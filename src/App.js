@@ -12,6 +12,7 @@ class App extends Component {
   // Update: componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate -> render() ->
 
   state ={
+  
   }
   //생명주기 필수!!!
   //setState로 상태를 변경하고 render 실행될떄마다 새로운 state로 변경되서 실행
@@ -48,6 +49,8 @@ class App extends Component {
     return movies
   }
 
+
+  // 언더바를 쓰는 이유는 리액트 자체기능과 헷갈리지않게하기위함.
   render() {
     return (
       <div className = "App">
