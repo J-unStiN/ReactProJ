@@ -19,12 +19,12 @@ function MoviePoster({poster}){
     )
 }
 
-Movie.prototype = {
+Movie.protoType = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired
 }
 
-MoviePoster.prototype = {
+MoviePoster.protoType = {
     poster: PropTypes.string.isRequired
 }
 

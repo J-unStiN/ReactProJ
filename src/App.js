@@ -11,44 +11,39 @@ class App extends Component {
   // Render: componentWillMount() -> render() -> componentDidMount()
   // Update: componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate -> render() ->
 
-  state ={
+  state ={}
   
-  }
   //생명주기 필수!!!
   //setState로 상태를 변경하고 render 실행될떄마다 새로운 state로 변경되서 실행
+  
+
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title: "Matrix",
-            poster: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg"
-          },
-          {
-            title:"Full Metal Jacket",
-            poster:"https://cdn1.i-scmp.com/sites/default/files/styles/1200x800/public/images/methode/2018/04/16/6b6cf178-4110-11e8-ab09-36e8e67fb996_1280x720_161442.jpg?itok=XS6jGPH2"
-          },
-          {
-            title:"Oldboy",
-            poster: "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Oldboykoreanposter.jpg/220px-Oldboykoreanposter.jpg"
-          },
-          {
-            title:"Star Wars",
-            poster:"https://lumiere-a.akamaihd.net/v1/images/star-wars-the-rise-of-skywalker-theatrical-poster-600_889ecbb6.jpeg?region=0%2C0%2C600%2C889"
-          }
-        ]
-      })
-    },2000)
+    this._getMoveies();
   }
 
   // 변수에 저장  제목과 포스터가 보이게끔
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie, index) => {
-      return <Movie title={movie.title} poster={movie.poster} key={index} />
+    const movies = this.state.movies.map(movie => {
+      return <Movie title={movie.title} poster={movie.large_cover_image} key={movie.id} />
     })
     return movies
   }
 
+
+  _getMoveies = async() => {
+    const movies = await this._callApi()
+    this.setState({
+      movies
+    })
+  }
+  
+  //ajax를 json으로 변환하는 방법!
+  _callApi = () => {
+    return fetch('https://yts.lt/api/v2/list_movies.json?sort_by=rating')
+    .then(potato => potato.json())
+    .then(json => json.data.movies)
+    .catch(err => console.log(err))
+  }
 
   // 언더바를 쓰는 이유는 리액트 자체기능과 헷갈리지않게하기위함.
   render() {
