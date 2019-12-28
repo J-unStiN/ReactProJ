@@ -3,10 +3,6 @@ import './App.css';
 import Movie from './Movie';
 
 
-
-
-
-
 class App extends Component {
   // Render: componentWillMount() -> render() -> componentDidMount()
   // Update: componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate -> render() ->
@@ -24,7 +20,12 @@ class App extends Component {
   // 변수에 저장  제목과 포스터가 보이게끔
   _renderMovies = () => {
     const movies = this.state.movies.map(movie => {
-      return <Movie title={movie.title} poster={movie.large_cover_image} key={movie.id} />
+      return <Movie title={movie.title_english}
+      poster={movie.medium_cover_image}
+      key={movie.id}
+      genres={movie.genres}
+      synopsis = {movie.synopsis}
+      />
     })
     return movies
   }
