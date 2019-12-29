@@ -36,6 +36,8 @@ function MovieGenre({genre}) {
 }
 
 
+//PropTypes 받은 데이터가 유효한 지 확인하는데 사용하는 유효성검사
+//isRequired는 반드시 입력되어야하는 필수 props
 
 Movie.protoType = {
     title: PropTypes.string.isRequired,
