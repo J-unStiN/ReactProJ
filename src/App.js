@@ -7,7 +7,9 @@ class App extends Component {
   // Render: componentWillMount() -> render() -> componentDidMount()
   // Update: componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate -> render() ->
 
-  state ={}
+  state ={
+    
+  }
   
   //생명주기 필수!!!
   //setState로 상태를 변경하고 render 실행될떄마다 새로운 state로 변경되서 실행
